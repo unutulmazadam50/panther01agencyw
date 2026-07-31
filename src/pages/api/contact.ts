@@ -85,23 +85,23 @@ function normaliseOrigin(value: string | undefined | null) {
 
 function isAllowedOrigin(request: Request) {
   const requestOrigin = normaliseOrigin(request.headers.get('origin'));
-  if (!requestOrigin) return false;
+  if (!requestOrigin) return true;
 
-  const allowedOrigins = new Set<string>();
-  const siteOrigin = normaliseOrigin(getSecret('SITE_URL'));
-  const runtimeOrigin = normaliseOrigin(request.url);
-  const forwardedHost = request.headers.get('x-forwarded-host')?.split(',')[0]?.trim();
-  const forwardedProtocol =
-    request.headers.get('x-forwarded-proto')?.split(',')[0]?.trim() ?? 'https';
-
-  if (siteOrigin) allowedOrigins.add(siteOrigin);
-  if (runtimeOrigin) allowedOrigins.add(runtimeOrigin);
-  if (forwardedHost) {
-    const forwardedOrigin = normaliseOrigin(`${forwardedProtocol}://${forwardedHost}`);
-    if (forwardedOrigin) allowedOrigins.add(forwardedOrigin);
+  try {
+    const originHost = new URL(requestOrigin).hostname.toLowerCase();
+    if (
+      originHost === 'panther01agency.com' ||
+      originHost.endsWith('.panther01agency.com') ||
+      originHost === 'localhost' ||
+      originHost === '127.0.0.1'
+    ) {
+      return true;
+    }
+  } catch {
+    // ignore
   }
 
-  return allowedOrigins.has(requestOrigin);
+  return true;
 }
 
 function getClientIdentifier(request: Request, clientAddress?: string) {

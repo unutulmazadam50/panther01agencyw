@@ -2,9 +2,9 @@ import { createHash } from 'node:crypto';
 import { z } from 'astro/zod';
 
 export const CONTACT_BODY_LIMIT = 16 * 1024;
-export const CONTACT_MIN_DWELL_MS = 1_500;
+export const CONTACT_MIN_DWELL_MS = 200;
 export const CONTACT_MAX_FORM_AGE_MS = 24 * 60 * 60 * 1_000;
-export const CONTACT_RATE_LIMIT_MAX = 5;
+export const CONTACT_RATE_LIMIT_MAX = 20;
 export const CONTACT_RATE_LIMIT_WINDOW_MS = 15 * 60 * 1_000;
 
 export type ContactField =
