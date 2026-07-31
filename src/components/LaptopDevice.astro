@@ -1,0 +1,42 @@
+---
+import LaptopScreenOne from './LaptopScreenOne.astro';
+import LaptopScreenTwo from './LaptopScreenTwo.astro';
+import LaptopScreenThree from './LaptopScreenThree.astro';
+
+const keyRows = [14, 14, 13, 10];
+---
+
+<div class="laptop-orbit" data-laptop-orbit>
+  <div class="laptop-shadow" aria-hidden="true"></div>
+  <div class="laptop-device">
+    <div class="laptop-lid">
+      <span class="lid-edge lid-edge-top" aria-hidden="true"></span>
+      <span class="lid-edge lid-edge-right" aria-hidden="true"></span>
+      <div class="screen-bezel">
+        <div class="camera" aria-hidden="true"></div>
+        <div class="laptop-screen" data-laptop-screen aria-label="Üç farklı demo otomasyon ekranı">
+          <div class="screen-panel is-visible" data-screen="0"><LaptopScreenOne /></div>
+          <div class="screen-panel" data-screen="1"><LaptopScreenTwo /></div>
+          <div class="screen-panel" data-screen="2"><LaptopScreenThree /></div>
+          <div class="screen-scan" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+    <div class="laptop-hinge" aria-hidden="true"></div>
+    <div class="laptop-base" aria-hidden="true">
+      <span class="speaker speaker-left"></span>
+      <span class="speaker speaker-right"></span>
+      <div class="keyboard">
+        {keyRows.map((keyCount, rowIndex) => (
+          <div class="keyboard-row">
+            {Array.from({ length: keyCount }).map((_, keyIndex) => (
+              <i class:list={{ 'key-wide': rowIndex === 3 && keyIndex === Math.floor(keyCount / 2) }}></i>
+            ))}
+          </div>
+        ))}
+      </div>
+      <span class="trackpad"></span>
+      <span class="base-lip"></span>
+    </div>
+  </div>
+</div>

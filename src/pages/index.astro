@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import AgencyIntro from '../components/AgencyIntro.astro';
+import AutomationShowcase from '../components/AutomationShowcase.astro';
+import Process from '../components/Process.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <!--
+    THESIS: AI otomasyonunu soyut vaatlerle değil, scroll ilerledikçe doğrulan ve karar akışını açan tek bir laptop sahnesiyle gösterir; standart kart-grid ajans şablonunu reddeder.
+    OWN-WORLD: Kömür siyahı yüzey, kırık beyaz tipografi, kontrollü sinyal kırmızısı, keskin metal kenarlar ve geniş editoryal boşluk.
+    STORY: Ziyaretçi ajansın alanını anlar, otomasyonun girdi-karar-aksiyon mantığını görür ve görüşme alanına ilerler.
+    FIRST VIEWPORT: Sol alanda üç satırlı net başlık ve CTA; sağda dik/çapraz metal laptop; arkasında tek kırmızı ışık odağı.
+    FORM: Brief tarafından sabitlenen sinematik ürün açılımı; Persuade modu, CSS 3D + scroll-scrub staging.
+  -->
+  <Header />
+  <main id="main">
+    <Hero />
+    <AgencyIntro />
+    <AutomationShowcase />
+    <Process />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <script>
+    import '../scripts/laptop-scroll';
+  </script>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import { site } from '../data/site';
+import BrandMark from './BrandMark.astro';
+---
+
+<footer class="site-footer">
+  <div class="page-shell footer-main">
+    <a class="footer-wordmark" href="/">
+      <BrandMark size={54} />
+      <span>{site.brand}</span>
+    </a>
+    <div class="footer-group">
+      <span>Sayfa</span>
+      {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+    <div class="footer-group">
+      <span>Sosyal</span>
+      {site.footer.social.map((item) =>
+        item.href ? <a href={item.href}>{item.label}</a> : <span class="footer-placeholder">{item.label} · eklenecek</span>
+      )}
+    </div>
+    <div class="footer-group">
+      <span>Yasal</span>
+      {site.footer.legal.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+  </div>
+  <div class="page-shell footer-bottom">
+    <span>© {new Date().getFullYear()} {site.brand}</span>
+    <span>AI otomasyon ajansı</span>
+  </div>
+</footer>

@@ -1,0 +1,104 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+
+const toc = [
+  { id: 'veri-sorumlusu', label: 'Veri sorumlusu' },
+  { id: 'veriler', label: 'İşlenen kişisel veriler' },
+  { id: 'amaclar', label: 'İşleme amaçları' },
+  { id: 'hukuki-sebepler', label: 'Hukuki sebepler ve yöntem' },
+  { id: 'aktarim', label: 'Aktarım ve hizmet sağlayıcılar' },
+  { id: 'saklama', label: 'Saklama ve güvenlik' },
+  { id: 'haklar', label: 'KVKK kapsamındaki haklarınız' },
+  { id: 'basvuru', label: 'Başvuru yöntemi' },
+] as const;
+---
+
+<LegalDocument
+  title="KVKK Aydınlatma Metni"
+  eyebrow="KİŞİSEL VERİLER"
+  summary="Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu’nun 10. maddesi kapsamında Panther01Agency web sitesi ve ilk iletişim sürecindeki kişisel veri işlemlerini açıklar."
+  metaTitle="KVKK Aydınlatma Metni — Panther01Agency"
+  metaDescription="Panther01Agency web sitesi ve iletişim formu için kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni."
+  updated="29 Temmuz 2026"
+  {toc}
+>
+  <div class="legal-callout">
+    <strong>Yayın öncesi tamamlanması gereken bilgi</strong>
+    <p>Panther01Agency şu anda ayrı bir tüzel kişilik değildir ve proje dosyasında veri sorumlusunun adı soyadı ile tebligat bilgisi henüz yer almamaktadır. Bu bilgiler aşağıdaki bölüme eklenmeden metin nihai KVKK aydınlatması olarak kullanılmamalıdır.</p>
+  </div>
+
+  <section id="veri-sorumlusu">
+    <span class="legal-section-number">01</span>
+    <h2>Veri sorumlusu</h2>
+    <p>Web sitesi üzerinden iletilen kişisel veriler, Panther01Agency marka adıyla hizmet sunan gerçek kişi hizmet sağlayıcı tarafından veri sorumlusu sıfatıyla işlenir. Veri sorumlusunun adı soyadı ile başvuru ve tebligat adresi, yayın öncesinde bu bölüme açıkça eklenmelidir.</p>
+    <p>Bu aydınlatma, web sitesi ziyareti ve hizmet öncesi iletişim aşamasıyla sınırlıdır. Müşteri projesi kapsamında farklı bir veri işleme rolü doğarsa bu rol ve sorumluluklar ayrı sözleşmeyle düzenlenir.</p>
+  </section>
+
+  <section id="veriler">
+    <span class="legal-section-number">02</span>
+    <h2>İşlenen kişisel veriler</h2>
+    <ul>
+      <li><strong>Kimlik ve iletişim:</strong> Ad soyad ve e-posta adresi.</li>
+      <li><strong>Mesleki bilgi:</strong> Formda isteğe bağlı olarak paylaşılan şirket veya kurum adı.</li>
+      <li><strong>Talep içeriği:</strong> Mesajınızda kendi tercihinizle verdiğiniz proje, ihtiyaç ve iletişim bilgileri.</li>
+      <li><strong>İşlem güvenliği:</strong> Form güvenliği ve kötüye kullanım önleme amacıyla kısa süreli, tek yönlü özet hâline getirilen bağlantı tanımlayıcısı; sunucu ve barındırma kayıtlarında oluşabilecek teknik erişim verileri.</li>
+      <li><strong>İşlem bilgisi:</strong> Gönderim zamanı, benzersiz form gönderim kimliği ve iletişimin sonuç durumu.</li>
+    </ul>
+    <p>İletişim formunda özel nitelikli kişisel veri paylaşmamanızı rica ederiz.</p>
+  </section>
+
+  <section id="amaclar">
+    <span class="legal-section-number">03</span>
+    <h2>İşleme amaçları</h2>
+    <ul>
+      <li>İletişim talebinizi almak, kimliğinizi doğrulamak ve size geri dönüş yapmak.</li>
+      <li>İhtiyacınızı değerlendirmek, görüşme planlamak ve teklif sürecini yürütmek.</li>
+      <li>Form güvenliğini sağlamak, spam ve kötüye kullanımı önlemek.</li>
+      <li>Hukuki yükümlülükleri yerine getirmek ve olası uyuşmazlıklarda hakları korumak.</li>
+      <li>Hizmet ve iletişim süreçlerini, yalnızca gerekli ölçüde iyileştirmek.</li>
+    </ul>
+  </section>
+
+  <section id="hukuki-sebepler">
+    <span class="legal-section-number">04</span>
+    <h2>Hukuki sebepler ve yöntem</h2>
+    <p>Veriler, KVKK’nın 5. maddesinde yer alan; bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olma, veri sorumlusunun hukuki yükümlülüğü, bir hakkın tesisi/kullanılması/korunması ve temel haklarınıza zarar vermemek kaydıyla meşru menfaat hukuki sebeplerine dayanılarak işlenir. Açık rızanın gerekli olduğu ayrı bir işlem yapılırsa rızanız ayrıca istenir.</p>
+    <p>Veriler elektronik ortamda, iletişim formu, e-posta yazışmaları ve teknik güvenlik kayıtları üzerinden otomatik veya kısmen otomatik yollarla elde edilir.</p>
+  </section>
+
+  <section id="aktarim">
+    <span class="legal-section-number">05</span>
+    <h2>Aktarım ve hizmet sağlayıcılar</h2>
+    <p>Form gönderiminin iletilmesi için e-posta altyapı sağlayıcısı Resend, web sitesinin çalışması için barındırma ve teknik altyapı sağlayıcıları kullanılabilir. Veriler yalnızca hizmetin sağlanması, güvenlik ve yasal yükümlülük amaçlarıyla; ihtiyaçla sınırlı olarak bu sağlayıcılarla ve kanunen yetkili kamu kurumlarıyla paylaşılabilir.</p>
+    <p>Yurt dışına veri aktarımı söz konusu olduğunda KVKK’nın 9. maddesindeki uygun güvence ve diğer aktarım şartları gözetilir. Proje kapsamında kullanılacak farklı sağlayıcılar, hizmet ilişkisinde ayrıca bildirilir.</p>
+  </section>
+
+  <section id="saklama">
+    <span class="legal-section-number">06</span>
+    <h2>Saklama ve güvenlik</h2>
+    <p>İletişim kayıtları; talebin sonuçlandırılması, olası hizmet ilişkisinin kurulması ve hukuki hakların korunması için gerekli süre boyunca saklanır. İlişki kurulmazsa kayıtlar düzenli gözden geçirme kapsamında silinir, yok edilir veya anonimleştirilir; kanuni saklama yükümlülükleri saklıdır.</p>
+    <p>Formdaki bağlantı tanımlayıcısı açık IP adresi yerine tek yönlü özet hâlinde ve kısa süreli olarak kötüye kullanım önleme amacıyla tutulur. Yetkisiz erişimi azaltmak için erişim sınırlaması, aktarım güvenliği ve veri minimizasyonu gibi uygun önlemler uygulanır.</p>
+  </section>
+
+  <section id="haklar">
+    <span class="legal-section-number">07</span>
+    <h2>KVKK kapsamındaki haklarınız</h2>
+    <p>KVKK’nın 11. maddesi uyarınca:</p>
+    <ul>
+      <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme ve işlenmişse bilgi talep etme,</li>
+      <li>İşleme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme,</li>
+      <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme,</li>
+      <li>Eksik veya yanlış işlenen verilerin düzeltilmesini isteme,</li>
+      <li>Kanuni şartları oluştuğunda silme veya yok etme ve bu işlemlerin aktarılan üçüncü kişilere bildirilmesini isteme,</li>
+      <li>Yalnızca otomatik sistemlerle analiz sonucu aleyhinize bir sonuca itiraz etme,</li>
+      <li>Kanuna aykırı işleme nedeniyle zarara uğrarsanız giderim talep etme</li>
+    </ul>
+    <p>haklarına sahipsiniz.</p>
+  </section>
+
+  <section id="basvuru">
+    <span class="legal-section-number">08</span>
+    <h2>Başvuru yöntemi</h2>
+    <p>KVKK kapsamındaki talebinizi ana sayfadaki <a href="/#iletisim">iletişim formu</a> üzerinden “KVKK başvurusu” ifadesiyle iletebilirsiniz. Kimliğinizi doğrulamak ve güvenli yanıt verebilmek için ek bilgi istenebilir. Başvurular, niteliğine göre en geç 30 gün içinde ücretsiz olarak sonuçlandırılır; işlemin ayrıca maliyet gerektirmesi hâlinde mevzuattaki tarife uygulanabilir.</p>
+  </section>
+</LegalDocument>

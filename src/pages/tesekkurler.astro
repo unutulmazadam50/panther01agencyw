@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<BaseLayout title="Teşekkürler — Panther01Agency" description="Mesajınız Panther01Agency ekibine ulaştı.">
+  <Header />
+  <main id="main" class="thank-you-page">
+    <div class="thank-you-glow" aria-hidden="true"></div>
+    <div class="thank-you-inner">
+      <BrandMark size={160} variant="primary" />
+      <span class="section-label">MESAJ ALINDI</span>
+      <h1>Teşekkürler.</h1>
+      <p>Mesajınız bize ulaştı. İçeriği inceleyip uygun bir sonraki adımla dönüş yapacağız.</p>
+      <a class="button" href="/">
+        Ana sayfaya dön
+        <Icon name="arrow-up-right" size={18} />
+      </a>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

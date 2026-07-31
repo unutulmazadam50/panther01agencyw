@@ -1,0 +1,22 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+  variant?: 'mark' | 'primary';
+}
+
+const { size = 48, class: className = '', variant = 'mark' } = Astro.props;
+const src = variant === 'primary'
+  ? '/brand/logo_brand-refresh_primary_20260730_full-color.png'
+  : '/brand/logo_brand-refresh_mark_20260730_full-color.png';
+---
+
+<img
+  class:list={['brand-mark', `brand-mark--${variant}`, className]}
+  src={src}
+  width={size}
+  height={size}
+  alt=""
+  aria-hidden="true"
+  decoding="async"
+/>

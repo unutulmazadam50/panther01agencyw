@@ -1,0 +1,23 @@
+---
+import { site } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+---
+
+<section class="agency-intro section-space" id="ajans" data-reveal-section>
+  <div class="page-shell">
+    <SectionHeading label={site.intro.label} title={site.intro.title} body={site.intro.body} />
+    <div class="principles-rail">
+      {site.intro.principles.map((principle, index) => (
+        <div class="principle-item">
+          <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <p>{principle}</p>
+        </div>
+      ))}
+    </div>
+    <a class="section-detail-link" href="/hakkimizda">
+      Ajans yaklaşımını incele
+      <Icon name="arrow-up-right" size={18} />
+    </a>
+  </div>
+</section>

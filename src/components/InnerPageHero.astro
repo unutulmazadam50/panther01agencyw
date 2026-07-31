@@ -1,0 +1,43 @@
+---
+import BrandMark from './BrandMark.astro';
+
+interface Props {
+  label: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  variant: 'flow' | 'identity';
+}
+
+const { label, eyebrow, title, body, variant } = Astro.props;
+---
+
+<section class:list={['inner-hero', `inner-hero-${variant}`]}>
+  <div class="page-shell inner-hero-shell">
+    <div class="inner-hero-copy">
+      <span class="section-label">{label}</span>
+      <p class="inner-eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="inner-hero-body">{body}</p>
+      <a class="text-link" href="#detay">Sayfayı keşfet <span aria-hidden="true">↓</span></a>
+    </div>
+
+    {variant === 'flow' ? (
+      <div class="inner-visual flow-console" aria-label="Girdi, karar ve aksiyon akışının kavramsal görünümü">
+        <div class="console-top"><span>LIVE FLOW</span><i></i></div>
+        <div class="console-rail" aria-hidden="true">
+          <span>GİRDİ</span><b></b><span>KARAR</span><b></b><span>AKSİYON</span>
+        </div>
+        <div class="console-readout" aria-hidden="true">
+          <strong>01</strong><span>Sinyal alındı</span><em>İnsan onayı açık</em>
+        </div>
+      </div>
+    ) : (
+      <div class="inner-visual identity-stage" aria-label="Panther01Agency marka işareti">
+        <span class="identity-index">01</span>
+        <BrandMark size={560} variant="primary" />
+        <span class="identity-caption">SİSTEMİ GÖR · AKIŞI NETLEŞTİR</span>
+      </div>
+    )}
+  </div>
+</section>

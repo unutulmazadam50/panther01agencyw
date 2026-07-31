@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import InnerPageHero from '../components/InnerPageHero.astro';
+import Icon from '../components/Icon.astro';
+import LaptopDevice from '../components/LaptopDevice.astro';
+import { site } from '../data/site';
+
+const page = site.pages.website;
+---
+
+<BaseLayout title={page.metaTitle} description={page.metaDescription}>
+  <Header />
+  <main id="main">
+    <InnerPageHero
+      label={page.hero.label}
+      eyebrow={page.hero.eyebrow}
+      title={page.hero.title}
+      body={page.hero.body}
+      variant="identity"
+    />
+
+    <!-- Web Mimari Bölümü: Sol taraftan süzülen yumuşak kırmızı ışık hüzmesi -->
+    <section class="editorial-section website-features-section" id="detay" data-reveal-section>
+      <div class="section-ambient-glow glow-left" aria-hidden="true"></div>
+      <div class="page-shell editorial-grid" style="position: relative; z-index: 1;">
+        <div class="editorial-heading">
+          <span class="section-label">WEB MİMARİSİ</span>
+          <h2>Sıradan şablonlar değil, markanıza özel yüksek performanslı dijital yapılar.</h2>
+        </div>
+        <div class="signal-list">
+          {page.features.map((feature) => (
+            <article class="signal-row">
+              <span>{feature.number}</span>
+              <div>
+                <h3>{feature.title}</h3>
+                <p>{feature.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Canlı Deneyim Bölümü: Laptop arkasında odaklanan kırmızı atmosfer ışığı -->
+    <section class="editorial-section showcase-section" data-reveal-section>
+      <div class="section-ambient-glow glow-center" aria-hidden="true"></div>
+      <div class="page-shell" style="position: relative; z-index: 1;">
+        <div class="principles-heading" style="margin-bottom: 3rem;">
+          <span class="section-label">CANLI DENEYİM</span>
+          <h2>Her cihazda kusursuz görüntüleme ve akış.</h2>
+        </div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <LaptopDevice />
+        </div>
+      </div>
+    </section>
+
+    <!-- Yaklaşım Köprüsü: Sağ taraftan gelen kırmızı hüzme -->
+    <section class="approach-bridge" data-reveal-section>
+      <div class="section-ambient-glow glow-right" aria-hidden="true"></div>
+      <div class="page-shell approach-bridge-inner" style="position: relative; z-index: 1;">
+        <span class="section-label">BİRLİKTE TASARLAYALIM</span>
+        <h2>Web sitenizi modern AI ve otomasyon altyapısıyla güçlendirin.</h2>
+        <a class="text-link" href="/hizmetlerimiz">Tüm hizmetlerimizi keşfedin <Icon name="arrow-up-right" size={18} /></a>
+      </div>
+    </section>
+
+    <FinalCTA />
+  </main>
+  <Footer />
+</BaseLayout>

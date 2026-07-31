@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div class="demo-ui demo-review" aria-label="Demo insan onayı arayüzü">
+  <div class="demo-topbar">
+    <div class="demo-brand"><span></span> Review queue</div>
+    <span class="demo-badge">DEMO</span>
+  </div>
+  <div class="review-layout">
+    <div class="review-heading">
+      <span>İNSAN KONTROLÜ</span>
+      <strong>Onay bekleyen akış</strong>
+      <small>Karar noktası görünür ve geri alınabilir tutulur.</small>
+    </div>
+    <div class="review-card">
+      <div class="review-card-head">
+        <span class="signal-icon">A</span>
+        <span><b>Aksiyon önerisi</b><small>AI tarafından hazırlandı · Demo</small></span>
+        <span class="review-status">Bekliyor</span>
+      </div>
+      <p>Toplanan bağlama göre ilgili ekip için bir takip görevi oluşturulması öneriliyor.</p>
+      <div class="review-meta">
+        <span>Hedef: Operasyon akışı</span>
+        <span>Kural: İnsan onayı gerekli</span>
+      </div>
+      <div class="review-actions" aria-hidden="true">
+        <span>Geri gönder</span>
+        <span class="approve"><Icon name="check" size={15} /> Onayla</span>
+      </div>
+    </div>
+  </div>
+</div>

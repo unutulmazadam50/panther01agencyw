@@ -1,0 +1,29 @@
+---
+import { site } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+---
+
+<section class="process section-space" id="yaklasim" data-reveal-section>
+  <div class="page-shell">
+    <SectionHeading
+      label={site.approach.label}
+      title={site.approach.title}
+      body={site.approach.body}
+    />
+
+    <div class="process-list">
+      {site.approach.steps.map((step, index) => (
+        <article class="process-row">
+          <span class="process-number">{step.number}</span>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+          <span class="process-arrow" aria-hidden="true">
+            <Icon name="arrow-down" size={20} />
+          </span>
+          {index < site.approach.steps.length - 1 && <span class="process-divider" aria-hidden="true"></span>}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,115 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+
+const toc = [
+  { id: 'kapsam', label: 'Kapsam ve kabul' },
+  { id: 'hizmetler', label: 'Hizmetlerin kapsamı' },
+  { id: 'proje', label: 'Teklif ve proje koşulları' },
+  { id: 'sorumluluklar', label: 'Müşteri sorumlulukları' },
+  { id: 'kullanim', label: 'Kabul edilebilir kullanım' },
+  { id: 'ucuncu-taraflar', label: 'Üçüncü taraf hizmetleri ve AI' },
+  { id: 'fikri-mulkiyet', label: 'Fikri mülkiyet ve veriler' },
+  { id: 'ucretler', label: 'Ücret, ödeme ve iptal' },
+  { id: 'gizlilik', label: 'Gizlilik ve güvenlik' },
+  { id: 'sorumlulugun-siniri', label: 'Sorumluluğun sınırı' },
+  { id: 'sona-erme', label: 'Askıya alma ve sona erme' },
+  { id: 'hukuk', label: 'Değişiklikler ve uygulanacak hukuk' },
+] as const;
+---
+
+<LegalDocument
+  title="Hizmet Koşulları"
+  eyebrow="YASAL ÇERÇEVE"
+  summary="Bu koşullar, Panther01Agency web sitesinin kullanımını ve taraflar arasında ayrıca bir sözleşme kurulmadığı ölçüde sunulan AI otomasyon hizmetlerinin genel çerçevesini açıklar."
+  metaTitle="Hizmet Koşulları — Panther01Agency"
+  metaDescription="Panther01Agency web sitesi ve AI otomasyon hizmetleri için geçerli genel hizmet koşulları."
+  updated="29 Temmuz 2026"
+  {toc}
+>
+  <div class="legal-callout">
+    <strong>Önemli sıra</strong>
+    <p>İmzalı teklif, hizmet sözleşmesi veya proje eki ile bu metin arasında farklılık varsa ilgili yazılı anlaşma önceliklidir.</p>
+  </div>
+
+  <section id="kapsam">
+    <span class="legal-section-number">01</span>
+    <h2>Kapsam ve kabul</h2>
+    <p>Bu web sitesini kullanarak veya Panther01Agency’den hizmet talep ederek bu koşulları okuduğunuzu kabul edersiniz. Bir hizmet ilişkisinin kurulması; kapsam, ücret ve takvim konusunda yazılı mutabakat sağlanmasına bağlıdır. Yalnızca iletişim formu göndermek taraflar arasında sözleşme kurmaz.</p>
+  </section>
+
+  <section id="hizmetler">
+    <span class="legal-section-number">02</span>
+    <h2>Hizmetlerin kapsamı</h2>
+    <p>Panther01Agency; iş akışı analizi, AI destekli otomasyon tasarımı, entegrasyon, kurulum, danışmanlık, bakım ve destek hizmetleri sunabilir. Her projenin teslimleri, kapsam dışı işler, kabul ölçütleri ve bağımlılıkları teklif veya hizmet sözleşmesinde belirlenir.</p>
+    <p>Web sitesindeki açıklamalar ve demo görselleri bilgilendirme amaçlıdır; belirli bir performans, sonuç veya hazır ürün taahhüdü oluşturmaz.</p>
+  </section>
+
+  <section id="proje">
+    <span class="legal-section-number">03</span>
+    <h2>Teklif ve proje koşulları</h2>
+    <ul>
+      <li>Çalışma, tarafların onayladığı kapsam ve başlangıç koşulları doğrultusunda yürütülür.</li>
+      <li>Kapsam değişiklikleri; süre, ücret ve teknik mimariyi etkileyebilir ve ayrıca onaylanır.</li>
+      <li>Müşterinin geciken onay, erişim veya içerik teslimleri proje takvimini aynı ölçüde etkileyebilir.</li>
+      <li>Canlıya alma ve kabul yöntemi, projeye özgü yazılı belgede belirtilir.</li>
+    </ul>
+  </section>
+
+  <section id="sorumluluklar">
+    <span class="legal-section-number">04</span>
+    <h2>Müşteri sorumlulukları</h2>
+    <p>Müşteri; sağladığı veri, içerik, talimat ve erişimlerin hukuka uygun, doğru ve gerekli izinlere sahip olmasından sorumludur. Hesap ve erişim bilgileri güvenli tutulmalı, yetkisiz kullanım şüphesi gecikmeden bildirilmelidir.</p>
+    <p>Otomasyonun kritik kararlar üzerindeki etkisini değerlendirmek, gerekli insan onayını sürdürmek ve teslim edilen sistemi kendi kullanım senaryosunda test etmek müşterinin sorumluluğundadır.</p>
+  </section>
+
+  <section id="kullanim">
+    <span class="legal-section-number">05</span>
+    <h2>Kabul edilebilir kullanım</h2>
+    <p>Hizmetler; hukuka aykırı izleme, spam, kimlik avı, kötü amaçlı yazılım, taciz, kişisel verilerin yetkisiz işlenmesi veya üçüncü kişilerin haklarını ihlal eden amaçlar için kullanılamaz. Güvenlik önlemlerini aşmaya, sistemi izinsiz çoğaltmaya ya da erişimleri üçüncü kişilere devretmeye yönelik girişimler yasaktır.</p>
+  </section>
+
+  <section id="ucuncu-taraflar">
+    <span class="legal-section-number">06</span>
+    <h2>Üçüncü taraf hizmetleri ve AI</h2>
+    <p>Projeler; barındırma, e-posta, mesajlaşma, ödeme, veri tabanı veya yapay zekâ sağlayıcıları gibi üçüncü taraf hizmetlere bağlanabilir. Bu sağlayıcıların kesintileri, politika değişiklikleri, fiyatları ve hesap kısıtlamaları Panther01Agency’nin doğrudan kontrolü dışındadır.</p>
+    <p>AI tarafından üretilen içerik olasılıksal olabilir ve eksik ya da hatalı sonuç verebilir. Hukuki, mali, sağlıkla ilgili veya benzeri yüksek etkili kararlarda insan incelemesi kaldırılmamalıdır.</p>
+  </section>
+
+  <section id="fikri-mulkiyet">
+    <span class="legal-section-number">07</span>
+    <h2>Fikri mülkiyet ve veriler</h2>
+    <p>Müşteri, projeye sağladığı veri ve içerikler üzerindeki haklarını korur. Projeye özgü teslimlerin kullanım veya devir koşulları yazılı anlaşmada belirlenir. Panther01Agency’nin önceden var olan yöntemleri, genel bileşenleri, marka unsurları ve bilgi birikimi aksi açıkça kararlaştırılmadıkça Panther01Agency’ye aittir.</p>
+  </section>
+
+  <section id="ucretler">
+    <span class="legal-section-number">08</span>
+    <h2>Ücret, ödeme ve iptal</h2>
+    <p>Ücretler, vergi durumu, ödeme planı, üçüncü taraf maliyetleri ve varsa yenileme koşulları teklif veya sözleşmede gösterilir. Geciken ödemeler, yazılı bildirim sonrasında çalışmanın duraklatılmasına yol açabilir. İptal ve iade koşulları, tamamlanan iş ve geri döndürülemez üçüncü taraf maliyetleri dikkate alınarak ilgili proje belgesine göre uygulanır.</p>
+  </section>
+
+  <section id="gizlilik">
+    <span class="legal-section-number">09</span>
+    <h2>Gizlilik ve güvenlik</h2>
+    <p>Taraflar, proje sırasında öğrendikleri kamuya açık olmayan bilgileri yalnızca hizmetin yürütülmesi amacıyla kullanır. Uygun teknik ve organizasyonel önlemler alınsa da internet üzerinden iletim veya hiçbir sistem için mutlak güvenlik garanti edilemez. Kişisel verilere ilişkin ayrıntılar <a href="/kvkk">KVKK Aydınlatma Metni</a> içinde açıklanır.</p>
+  </section>
+
+  <section id="sorumlulugun-siniri">
+    <span class="legal-section-number">10</span>
+    <h2>Sorumluluğun sınırı</h2>
+    <p>Emredici hukuk hükümleri saklı kalmak üzere Panther01Agency; üçüncü taraf kesintileri, müşterinin yanlış yapılandırması, yetkisiz müdahalesi, doğrulanmadan kullanılan AI çıktıları veya kapsam dışı kullanım nedeniyle doğan dolaylı zararlardan sorumlu tutulamaz.</p>
+    <p>Tarafların sorumluluk sınırları ve varsa özel garantiler proje sözleşmesinde belirlenir. Bu bölüm, kanunen sınırlandırılamayan sorumlulukları ortadan kaldırmaz.</p>
+  </section>
+
+  <section id="sona-erme">
+    <span class="legal-section-number">11</span>
+    <h2>Askıya alma ve sona erme</h2>
+    <p>Güvenlik riski, hukuka aykırı kullanım, ödenmeyen ücret veya sözleşmenin esaslı ihlali hâlinde hizmet, mümkün olduğunda önceden bildirim yapılarak askıya alınabilir. Sona erme sonrasında erişim, veri teslimi, silme ve geçiş desteği ilgili sözleşme ile <a href="/kvkk">KVKK Aydınlatma Metni</a> doğrultusunda yürütülür.</p>
+  </section>
+
+  <section id="hukuk">
+    <span class="legal-section-number">12</span>
+    <h2>Değişiklikler ve uygulanacak hukuk</h2>
+    <p>Bu koşullar hizmet modelindeki veya mevzuattaki değişikliklere göre güncellenebilir. Güncel tarih sayfanın üstünde gösterilir. Kurulmuş sözleşmelerde esaslı değişiklikler, ilgili anlaşmadaki bildirim yöntemiyle duyurulur.</p>
+    <p>Türkiye Cumhuriyeti hukuku uygulanır. Tüketicilerin emredici hakları ve kanunen yetkili mercilere başvuru hakları saklıdır.</p>
+  </section>
+</LegalDocument>

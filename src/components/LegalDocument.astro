@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+
+interface TocItem {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  summary: string;
+  metaTitle: string;
+  metaDescription: string;
+  updated: string;
+  toc: readonly TocItem[];
+}
+
+const {
+  title,
+  eyebrow,
+  summary,
+  metaTitle,
+  metaDescription,
+  updated,
+  toc,
+} = Astro.props;
+---
+
+<BaseLayout title={metaTitle} description={metaDescription}>
+  <Header />
+  <main id="main" class="legal-page">
+    <header class="legal-hero">
+      <div class="page-shell legal-hero-grid">
+        <div>
+          <span class="section-label">{eyebrow}</span>
+          <h1>{title}</h1>
+        </div>
+        <div class="legal-hero-summary">
+          <p>{summary}</p>
+          <span>Son güncelleme · {updated}</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-shell legal-layout">
+      <aside class="legal-toc" aria-label="Sayfa içeriği">
+        <span>İçindekiler</span>
+        <nav>
+          {toc.map((item, index) => (
+            <a href={`#${item.id}`}>
+              <small>{String(index + 1).padStart(2, '0')}</small>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="legal-content">
+        <slot />
+      </article>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

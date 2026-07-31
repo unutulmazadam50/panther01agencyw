@@ -1,0 +1,138 @@
+---
+import LegalDocument from '../components/LegalDocument.astro';
+
+const toc = [
+  { id: 'kapsam', label: 'Kapsam' },
+  { id: 'tanimlar', label: 'Tanımlar' },
+  { id: 'hizmet-hedefi', label: 'Hizmet seviyesi hedefi' },
+  { id: 'bakim', label: 'Planlı bakım' },
+  { id: 'olay-onceligi', label: 'Olay öncelikleri' },
+  { id: 'izleme', label: 'İzleme ve bildirim' },
+  { id: 'istisnalar', label: 'İstisnalar' },
+  { id: 'telafi', label: 'Telafi ve talepler' },
+  { id: 'degisiklikler', label: 'Değişiklikler' },
+] as const;
+---
+
+<LegalDocument
+  title="Hizmet Seviyesi Çerçevesi"
+  eyebrow="SLA"
+  summary="Bu sayfa, aktif bakım veya destek kapsamındaki otomasyonlar için hizmet sürekliliğinin nasıl ele alındığını açıklar. Projeye özgü sayısal hedefler yazılı sözleşmede belirlenir."
+  metaTitle="Hizmet Seviyesi Çerçevesi (SLA) — Panther01Agency"
+  metaDescription="Panther01Agency otomasyon projeleri için bakım, olay önceliği, izleme ve hizmet seviyesi çerçevesi."
+  updated="29 Temmuz 2026"
+  {toc}
+>
+  <div class="legal-callout">
+    <strong>Bağlayıcılık</strong>
+    <p>Bu genel çerçeve tek başına kesintisiz çalışma yüzdesi, kesin çözüm süresi veya hizmet kredisi taahhüdü vermez. Bağlayıcı hedefler yalnızca teklifte veya hizmet sözleşmesinde açıkça yazıldığında uygulanır.</p>
+  </div>
+
+  <section id="kapsam">
+    <span class="legal-section-number">01</span>
+    <h2>Kapsam</h2>
+    <p>Bu çerçeve, Panther01Agency tarafından kurulmuş ve aktif bakım ya da destek hizmetine dâhil edilmiş üretim otomasyonları için uygulanabilir. Prototipler, ücretsiz çalışmalar, yalnızca danışmanlık kapsamındaki işler ve müşteri veya üçüncü kişi tarafından değiştirilmiş sistemler aksi yazılı olarak kararlaştırılmadıkça kapsam dışındadır.</p>
+  </section>
+
+  <section id="tanimlar">
+    <span class="legal-section-number">02</span>
+    <h2>Tanımlar</h2>
+    <dl>
+      <div>
+        <dt>Hizmet</dt>
+        <dd>Yazılı proje kapsamına alınmış otomasyon, entegrasyon ve bunlara ilişkin destek bileşenleri.</dd>
+      </div>
+      <div>
+        <dt>Kesinti</dt>
+        <dd>Kapsam içindeki hizmetin hedeflenen ana işlevini yerine getirememesi. Planlı bakım ve aşağıdaki istisnalar bu tanıma dâhil değildir.</dd>
+      </div>
+      <div>
+        <dt>İlk yanıt</dt>
+        <dd>Olay kaydının alındığının, önceliğinin ve incelemeye başlandığının bildirilmesi; çözüm tamamlandığı anlamına gelmez.</dd>
+      </div>
+      <div>
+        <dt>Çözüm veya geçici çözüm</dt>
+        <dd>Hizmetin yeniden çalıştırılması ya da ana etkisinin kabul edilebilir biçimde azaltılması.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="hizmet-hedefi">
+    <span class="legal-section-number">03</span>
+    <h2>Hizmet seviyesi hedefi</h2>
+    <p>Varsa çalışma süresi yüzdesi; ölçüm dönemi, hizmet saatleri, izleme yöntemi ve izin verilen kesinti süresiyle birlikte proje sözleşmesinde belirtilir. Böyle bir oran yazılı değilse hizmet makul özen ve en iyi çaba esasıyla sunulur.</p>
+    <p>Birden fazla üçüncü taraf sisteme bağlı otomasyonlarda, uçtan uca kullanılabilirlik bu sağlayıcıların çalışma durumundan etkilenebilir.</p>
+  </section>
+
+  <section id="bakim">
+    <span class="legal-section-number">04</span>
+    <h2>Planlı bakım</h2>
+    <p>Güvenlik, sürüm güncellemesi veya altyapı değişikliği için planlı bakım yapılabilir. Kullanıcı etkisi beklenen bakımlar, mümkün olan ölçüde düşük trafik saatlerine yerleştirilir ve sözleşmede kararlaştırılan iletişim kanalı üzerinden önceden bildirilir. Acil güvenlik müdahalelerinde ön bildirim süresi kısalabilir.</p>
+  </section>
+
+  <section id="olay-onceligi">
+    <span class="legal-section-number">05</span>
+    <h2>Olay öncelikleri</h2>
+    <div class="legal-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Öncelik</th>
+            <th>Tanım</th>
+            <th>İşleyiş</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kritik</td>
+            <td>Ana üretim akışı tamamen durmuş, veri güvenliği riski oluşmuş veya uygulanabilir geçici çözüm yok.</td>
+            <td>Aktif destek saatlerinde en yüksek öncelikle ele alınır.</td>
+          </tr>
+          <tr>
+            <td>Yüksek</td>
+            <td>Önemli bir işlev ciddi biçimde etkilenmiş ancak sınırlı bir geçici çözüm mevcut.</td>
+            <td>Kritik olaylardan sonra önceliklendirilir.</td>
+          </tr>
+          <tr>
+            <td>Normal</td>
+            <td>Genel soru, küçük hata, iyileştirme veya ana akışı durdurmayan sorun.</td>
+            <td>Planlı destek sırasına alınır.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Destek saatleri, ilk yanıt ve hedef çözüm süreleri müşterinin teklifinde veya destek sözleşmesinde gösterilir.</p>
+  </section>
+
+  <section id="izleme">
+    <span class="legal-section-number">06</span>
+    <h2>İzleme ve bildirim</h2>
+    <p>İzleme kapsamı; sağlık kontrolleri, hata kayıtları, bildirimler ve üçüncü taraf durum verileri gibi projeye uygun yöntemlerle belirlenir. Bir sorun bildirirken etkilenen akışın adı, başlangıç zamanı, görülen hata, son yapılan değişiklik ve mümkünse ekran görüntüsü paylaşılmalıdır.</p>
+  </section>
+
+  <section id="istisnalar">
+    <span class="legal-section-number">07</span>
+    <h2>İstisnalar</h2>
+    <ul>
+      <li>Müşteri ağı, cihazı, alan adı, hesabı, erişim anahtarı veya yapılandırmasından kaynaklanan sorunlar.</li>
+      <li>Bulut, mesajlaşma, e-posta, ödeme, AI modeli veya benzeri üçüncü taraf kesintileri ve kota değişiklikleri.</li>
+      <li>Yetkisiz değişiklik, hatalı kullanım, sözleşmeye aykırı işlem veya gerekli güncellemenin reddedilmesi.</li>
+      <li>Önceden duyurulan planlı bakım ile acil güvenlik müdahaleleri.</li>
+      <li>Mücbir sebep, kamu otoritesi işlemleri, internet omurgası kesintileri ve makul kontrol dışındaki olaylar.</li>
+    </ul>
+  </section>
+
+  <section id="telafi">
+    <span class="legal-section-number">08</span>
+    <h2>Telafi ve talepler</h2>
+    <p>Hizmet kredisi, ücret indirimi veya başka bir telafi yalnızca ilgili sözleşmede açıkça tanımlanmışsa uygulanır. Talep; olay tarihinden itibaren sözleşmede belirtilen süre içinde, olay kaydı ve etki bilgileriyle iletişim kanalı üzerinden iletilmelidir.</p>
+    <p>Olay ölçümünde, tarafların kararlaştırdığı izleme kayıtları ve üçüncü taraf durum raporları esas alınır.</p>
+  </section>
+
+  <section id="degisiklikler">
+    <span class="legal-section-number">09</span>
+    <h2>Değişiklikler</h2>
+    <p>Bu genel çerçeve hizmet modeline göre güncellenebilir. Aktif bir sözleşmedeki bağlayıcı hizmet seviyeleri, ancak ilgili sözleşmede öngörülen değişiklik yöntemiyle güncellenir.</p>
+    <p>Genel kullanım hükümleri için <a href="/terms">Hizmet Koşulları</a> geçerlidir.</p>
+  </section>
+</LegalDocument>

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-29T00:00:00.000Z",
+  "title": "Design System: Panther01Agency",
+  "extensions": {
+    "colorMeta": {
+      "signal-red": {
+        "role": "primary",
+        "displayName": "Signal Red",
+        "canonical": "#e32620",
+        "tonalRamp": ["#310402", "#520705", "#790b08", "#a2130e", "#c9201a", "#e32620", "#f56e68", "#ffd1ce"]
+      },
+      "coal": {
+        "role": "neutral",
+        "displayName": "Coal",
+        "canonical": "#050505",
+        "tonalRamp": ["#050505", "#121212", "#262626", "#3e3e3e", "#626262", "#939393", "#c8c8c8", "#f4f3f0"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#f4f3f0",
+        "tonalRamp": ["#252422", "#454440", "#696762", "#8c8983", "#afaca5", "#cfcdc7", "#e5e3de", "#f4f3f0"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Engineered Display",
+        "purpose": "Schibsted Grotesk for hero, section statements and process titles."
+      },
+      "body": {
+        "displayName": "Open Body",
+        "purpose": "Manrope for readable Turkish explanatory copy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "device-depth",
+        "value": "-22px 34px 65px rgba(0,0,0,0.56)",
+        "purpose": "Separates the CSS 3D laptop from the red light field."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16,1,0.3,1)",
+        "purpose": "Load choreography and fast interface state changes."
+      },
+      {
+        "name": "scroll-scrub",
+        "value": "GSAP ScrollTrigger scrub 0.7",
+        "purpose": "Straightens and recenters the laptop in direct continuity with scroll."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "620px" },
+      { "name": "tablet", "value": "879px" },
+      { "name": "compact-desktop", "value": "1180px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast squared action for the page's primary path.",
+      "html": "<button class=\"ds-button-primary\">Görüşme alanına git ↗</button>",
+      "css": ".ds-button-primary{height:52px;padding:0 20px;border:0;border-radius:0;background:#e32620;color:#fff;font:540 .82rem 'Schibsted Grotesk Variable',sans-serif;transition:transform 180ms cubic-bezier(.16,1,.3,1),background 180ms cubic-bezier(.16,1,.3,1)}.ds-button-primary:hover{background:#ff4138}.ds-button-primary:active{transform:scale(.97)}.ds-button-primary:focus-visible{outline:2px solid #ff4138;outline-offset:4px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action with a fine metal-like edge.",
+      "html": "<button class=\"ds-button-ghost\">Demo akışını incele ↓</button>",
+      "css": ".ds-button-ghost{height:52px;padding:0 20px;border:1px solid rgba(255,255,255,.2);border-radius:0;background:rgba(255,255,255,.02);color:#d8d6d1;font:540 .82rem 'Schibsted Grotesk Variable',sans-serif;transition:background 180ms cubic-bezier(.16,1,.3,1),border-color 180ms cubic-bezier(.16,1,.3,1)}.ds-button-ghost:hover{border-color:rgba(255,255,255,.38);background:rgba(255,255,255,.06)}.ds-button-ghost:focus-visible{outline:2px solid #ff4138;outline-offset:4px}"
+    },
+    {
+      "name": "Demo Badge",
+      "kind": "chip",
+      "description": "Explicit marker for synthetic interface content.",
+      "html": "<span class=\"ds-demo-badge\">DEMO</span>",
+      "css": ".ds-demo-badge{display:inline-block;padding:4px 7px;border:1px solid rgba(255,255,255,.14);border-radius:4px;color:#8d8d8c;background:#0d0e10;font:600 10px 'Schibsted Grotesk Variable',sans-serif;letter-spacing:.08em}"
+    },
+    {
+      "name": "Fixed Navigation",
+      "kind": "nav",
+      "description": "Quiet fixed navigation that condenses after scroll.",
+      "html": "<nav class=\"ds-nav\"><strong>Panther01Agency</strong><span>Ajans</span><span>Otomasyon</span><span>Yaklaşım</span></nav>",
+      "css": ".ds-nav{height:68px;display:flex;align-items:center;gap:34px;padding:0 28px;border-bottom:1px solid rgba(255,255,255,.11);background:#050505;color:#c5c3bf;font:400 13px 'Manrope Variable',sans-serif}.ds-nav strong{margin-right:auto;color:#f4f3f0;font-family:'Schibsted Grotesk Variable',sans-serif}.ds-nav span:hover{color:#fff}"
+    },
+    {
+      "name": "Device Panel",
+      "kind": "custom",
+      "description": "Graphite demo surface used inside the CSS 3D laptop.",
+      "html": "<div class=\"ds-device-panel\"><span>DEMO</span><h3>Otomasyon kurgusu</h3><p>Tetikleyici → Karar → Aksiyon</p></div>",
+      "css": ".ds-device-panel{width:320px;padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:#121315;color:#f4f3f0;box-shadow:0 18px 35px rgba(0,0,0,.3);font-family:'Manrope Variable',sans-serif}.ds-device-panel span{color:#ff4138;font-size:10px;letter-spacing:.1em}.ds-device-panel h3{margin:12px 0 6px;font:450 24px 'Schibsted Grotesk Variable',sans-serif}.ds-device-panel p{margin:0;color:#aaa8a3}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Signal in the Dark",
+    "overview": "A controlled operations room seen through a premium product lens: near-black space, precise typography, decisive red fields, and metal-edged interface surfaces.",
+    "keyCharacteristics": [
+      "Restrained signal red on coal-black surfaces",
+      "Wide editorial spacing with asymmetric compositions",
+      "One cinematic motion sequence with fast micro-interactions elsewhere"
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Red is a scarce directional cue and focused light source, never a page-wide neon wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Bounded Light Rule",
+        "body": "Glow belongs behind the laptop or the final CTA atmosphere and must not reduce copy contrast.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do label illustrative automation interfaces as demo content.",
+      "Do use transform, opacity, and bounded filter effects for motion."
+    ],
+    "donts": [
+      "Don't introduce cyberpunk grids, Matrix motifs, particle rain, or crypto styling.",
+      "Don't add unverified metrics, logos, testimonials, or service claims."
+    ]
+  }
+}

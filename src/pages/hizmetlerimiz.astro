@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import InnerPageHero from '../components/InnerPageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const page = site.pages.services;
+---
+
+<BaseLayout title={page.metaTitle} description={page.metaDescription}>
+  <Header />
+  <main id="main">
+    <InnerPageHero
+      label={page.hero.label}
+      eyebrow={page.hero.eyebrow}
+      title={page.hero.title}
+      body={page.hero.body}
+      variant="flow"
+    />
+
+    <section class="editorial-section service-list-section" id="detay" data-reveal-section>
+      <div class="section-ambient-glow glow-left" aria-hidden="true"></div>
+      <div class="page-shell editorial-grid" style="position: relative; z-index: 1;">
+        <div class="editorial-heading">
+          <span class="section-label">HİZMET YELPAZEMİZ</span>
+          <h2>Karmaşıklığı sadeleştiren uçtan uca uzmanlık alanlarımız.</h2>
+        </div>
+        <div class="signal-list">
+          {page.servicesList.map((service) => (
+            <article class="signal-row">
+              <span>{service.number}</span>
+              <div>
+                <h3>{service.title}</h3>
+                <p>{service.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-bridge" data-reveal-section>
+      <div class="section-ambient-glow glow-right" aria-hidden="true"></div>
+      <div class="page-shell approach-bridge-inner" style="position: relative; z-index: 1;">
+        <span class="section-label">ÖZEL ÇÖZÜMLER</span>
+        <h2>İhtiyacınıza uygun otomasyon ve web altyapılarını birlikte oluşturalım.</h2>
+        <a class="text-link" href="/otomasyonlar">Otomasyon mantığımızı inceleyin <Icon name="arrow-up-right" size={18} /></a>
+      </div>
+    </section>
+
+    <FinalCTA />
+  </main>
+  <Footer />
+</BaseLayout>

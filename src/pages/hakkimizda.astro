@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import InnerPageHero from '../components/InnerPageHero.astro';
+import { site } from '../data/site';
+
+const page = site.pages.about;
+---
+
+<BaseLayout title={page.metaTitle} description={page.metaDescription}>
+  <!--
+    THESIS: Ajansı soyut kurumsal sıfatlarla değil, sistemi görünür kılan üç net ilke ve üç aşamalı çalışma biçimiyle konumlandırır.
+    OWN-WORLD: Kömür siyahı zemin, kırmızı kimlik sahnesi, geniş beyaz boşluk duygusu ve metalik ince çizgiler.
+    STORY: Ziyaretçi konumu anlar, ilkeleri okur, yöntemi izler, şeffaflık taahhütlerini görür ve iletişime geçer.
+    FIRST VIEWPORT: Solda ajans tezi; sağda kırmızı alan üzerinde panter gözü + 01 marka işareti.
+    FORM: Persuade modu; büyük editoryal ifade, numaralı satırlar ve tek güçlü marka sahnesi.
+  -->
+  <Header />
+  <main id="main">
+    <InnerPageHero
+      label={page.hero.label}
+      eyebrow={page.hero.eyebrow}
+      title={page.hero.title}
+      body={page.hero.body}
+      variant="identity"
+    />
+
+    <section class="editorial-section positioning-section" id="detay" data-reveal-section>
+      <div class="page-shell positioning-grid">
+        <span class="section-label">KONUMLANDIRMA</span>
+        <p class="positioning-statement">
+          Otomasyonu bir “daha fazla araç” problemi olarak görmüyoruz.
+          <strong>Asıl mesele; bilginin, kararın ve sorumluluğun aynı sistemde anlaşılır olması.</strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="principles-section" data-reveal-section>
+      <div class="page-shell">
+        <div class="principles-heading">
+          <span class="section-label">ÜÇ TEMEL İLKE</span>
+          <h2>Sade görünür. Derin düşünülür.</h2>
+        </div>
+        <div class="about-principles">
+          {page.principles.map(([title, body], index) => (
+            <article>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="method-section" data-reveal-section>
+      <div class="page-shell method-grid">
+        <div class="method-intro">
+          <span class="section-label">YAKLAŞIM</span>
+          <h2>Dinle. Haritala. Kurgula.</h2>
+          <p>Yöntem, teknoloji seçmeden önce işleyişin kendisini anlaşılır hâle getirir.</p>
+        </div>
+        <ol class="method-steps">
+          {site.approach.steps.map((step) => (
+            <li>
+              <span>{step.number}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="commitment-section" data-reveal-section>
+      <div class="page-shell commitment-grid">
+        <div>
+          <span class="section-label">ŞEFFAFLIK</span>
+          <h2>Kontrol insanda. Sistem görünür.</h2>
+        </div>
+        <ul>
+          {page.commitments.map((commitment) => (
+            <li><span aria-hidden="true">+</span>{commitment}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <FinalCTA />
+  </main>
+  <Footer />
+</BaseLayout>

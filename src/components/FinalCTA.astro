@@ -1,0 +1,17 @@
+---
+import { site } from '../data/site';
+import ContactForm from './ContactForm.astro';
+---
+
+<section class="final-cta" id="iletisim" data-reveal-section>
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="page-shell final-cta-inner contact-layout">
+    <div class="contact-copy">
+      <span class="section-label">{site.contact.label}</span>
+      <h2>{site.contact.title}</h2>
+      <p>{site.contact.body}</p>
+      <span class="contact-note">Form doğrudan Panther01Agency ekibine ulaşır.</span>
+    </div>
+    <ContactForm />
+  </div>
+</section>

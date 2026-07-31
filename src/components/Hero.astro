@@ -1,0 +1,80 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+import LaptopDevice from './LaptopDevice.astro';
+---
+
+<section class="hero-experience" id="top" data-laptop-experience>
+  <div class="hero-sticky">
+    <div class="hero-red-field" data-red-field aria-hidden="true">
+      <span>AI / SYSTEMS / AUTOMATION</span>
+    </div>
+    <div class="hero-ambient" aria-hidden="true">
+      <span class="ambient-core"></span>
+      <span class="ambient-beam beam-one"></span>
+      <span class="ambient-beam beam-two"></span>
+    </div>
+    <div class="hero-rule" aria-hidden="true"></div>
+
+    <div class="hero-copy page-shell" data-hero-copy>
+      <div class="hero-kicker reveal-item">
+        <span class="kicker-line"></span>
+        {site.hero.label}
+      </div>
+      <h1 class="reveal-item">
+        <span>{site.hero.titleLead}{' '}</span>
+        <strong>{site.hero.titleFocus}{' '}</strong>
+        <span>{site.hero.titleTail}</span>
+      </h1>
+      <p class="hero-body reveal-item">{site.hero.body}</p>
+      <div class="hero-actions reveal-item">
+        <a class="button button-primary" href={site.hero.primaryCta.href}>
+          {site.hero.primaryCta.label}
+          <Icon name="arrow-up-right" size={18} />
+        </a>
+        <a class="button button-ghost" href={site.hero.secondaryCta.href}>
+          {site.hero.secondaryCta.label}
+          <Icon name="arrow-down" size={18} />
+        </a>
+      </div>
+      <p class="content-note reveal-item">{site.hero.note}</p>
+    </div>
+
+    <div class="laptop-stage" data-laptop-stage>
+      <LaptopDevice />
+    </div>
+
+    <div class="screen-story" id="demo" data-screen-story>
+      <div class="screen-story-copy" aria-live="polite">
+        {site.laptop.screens.map((screen, index) => (
+          <article class:list={['screen-caption', { 'is-active': index === 0 }]} data-caption={index}>
+            <span>{screen.index} / {site.laptop.sectionLabel}</span>
+            <h2>{screen.heading}</h2>
+            <p>{screen.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="screen-progress" role="tablist" aria-label="Demo ekranları">
+        {site.laptop.screens.map((screen, index) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={index === 0 ? 'true' : 'false'}
+            aria-label={`${screen.index}: ${screen.label}`}
+            class:list={{ 'is-active': index === 0 }}
+            data-screen-control={index}
+          >
+            <span>{screen.index}</span>
+            <i></i>
+            <b>{screen.label}</b>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="scroll-cue" data-scroll-cue>
+      <span>Kaydır</span>
+      <i></i>
+    </div>
+  </div>
+</section>

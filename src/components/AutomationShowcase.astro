@@ -1,0 +1,36 @@
+---
+import { site } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+---
+
+<section class="automation-showcase section-space" id="otomasyon" data-reveal-section>
+  <div class="page-shell">
+    <SectionHeading label={site.automation.label} title={site.automation.title} body={site.automation.body} />
+
+    <div class="automation-map" aria-label="Kavramsal otomasyon akışı">
+      <svg class="automation-line" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
+        <path class="line-muted" d="M80 120H920" />
+        <path class="line-active" d="M80 120H920" data-flow-line />
+      </svg>
+      {site.automation.stages.map((stage, index) => (
+        <article class="automation-stage">
+          <div class="stage-node" aria-hidden="true">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+          </div>
+          <span class="stage-tag">{stage.tag}</span>
+          <h3>{stage.title}</h3>
+          <p>{stage.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="automation-footer">
+      <p class="demo-disclaimer">Kavramsal demo · Gerçek müşteri sistemi veya performans verisi değildir.</p>
+      <a class="section-detail-link" href="/otomasyonlar">
+        Otomasyonları ayrıntılı incele
+        <Icon name="arrow-up-right" size={18} />
+      </a>
+    </div>
+  </div>
+</section>

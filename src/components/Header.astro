@@ -1,0 +1,126 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+import BrandMark from './BrandMark.astro';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => {
+  const route = href.split('#')[0] || '/';
+  return route !== '/' && pathname === route;
+};
+---
+
+<header class="site-header" data-header>
+  <a class="wordmark" href="/" aria-label="Panther01Agency ana sayfa">
+    <BrandMark size={42} />
+    <span>{site.brand}</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Ana navigasyon">
+    {site.navigation.map((item) => (
+      <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+    ))}
+  </nav>
+
+  <a class="header-cta" href="/#iletisim">
+    Görüşelim
+    <Icon name="arrow-up-right" size={17} />
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Menüyü aç"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    data-menu-toggle
+  >
+    <span class="menu-icon-open"><Icon name="menu" /></span>
+    <span class="menu-icon-close"><Icon name="close" /></span>
+  </button>
+
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+    <nav aria-label="Mobil navigasyon">
+      {site.navigation.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+      ))}
+      <a href="/#iletisim">Görüşme alanına git</a>
+    </nav>
+    <span class="mobile-menu-caption">AI otomasyon ajansı</span>
+  </div>
+</header>
+
+<script>
+  const setupHeader = () => {
+    const header = document.querySelector<HTMLElement>('[data-header]');
+    const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+    const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+
+    if (!header || !toggle || !menu || header.dataset.ready === 'true') return;
+    header.dataset.ready = 'true';
+
+    const pageRegions = [
+      document.querySelector<HTMLElement>('main'),
+      document.querySelector<HTMLElement>('footer'),
+    ].filter((region): region is HTMLElement => Boolean(region));
+    let restoreFocus: HTMLElement | null = null;
+
+    const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    const closeMenu = (returnFocus = false) => {
+      menu.hidden = true;
+      header.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menüyü aç');
+      document.body.classList.remove('menu-lock');
+      pageRegions.forEach((region) => region.removeAttribute('inert'));
+      if (returnFocus) (restoreFocus ?? toggle).focus();
+      restoreFocus = null;
+    };
+
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        closeMenu(true);
+      } else {
+        restoreFocus = document.activeElement instanceof HTMLElement ? document.activeElement : toggle;
+        menu.hidden = false;
+        header.classList.add('menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Menüyü kapat');
+        document.body.classList.add('menu-lock');
+        pageRegions.forEach((region) => region.setAttribute('inert', ''));
+        menu.querySelector<HTMLAnchorElement>('a')?.focus();
+      }
+    });
+
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu(false)));
+    document.addEventListener('keydown', (event) => {
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMenu(true);
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+      const focusable = [toggle, ...menu.querySelectorAll<HTMLAnchorElement>('a')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 880) closeMenu();
+    });
+    updateHeader();
+  };
+
+  setupHeader();
+</script>
