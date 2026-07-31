@@ -313,9 +313,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return response;
   }
 
-  const apiKey = getSecret('RESEND_API_KEY');
-  const from = getSecret('CONTACT_FROM_EMAIL');
-  const to = getSecret('CONTACT_TO_EMAIL')
+  const apiKey = getSecret('RESEND_API_KEY') || process.env.RESEND_API_KEY || (import.meta.env.RESEND_API_KEY as string | undefined);
+  const from = getSecret('CONTACT_FROM_EMAIL') || process.env.CONTACT_FROM_EMAIL || (import.meta.env.CONTACT_FROM_EMAIL as string | undefined);
+  const rawTo = getSecret('CONTACT_TO_EMAIL') || process.env.CONTACT_TO_EMAIL || (import.meta.env.CONTACT_TO_EMAIL as string | undefined);
+  const to = rawTo
     ?.split(',')
     .map((address) => address.trim())
     .filter(Boolean);

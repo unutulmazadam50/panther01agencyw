@@ -123,16 +123,24 @@ import Icon from './Icon.astro';
           body: new FormData(form),
           headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
         });
-        const payload = (await response.json()) as ContactPayload;
 
-        if (!response.ok || !payload.ok) {
-          Object.entries(payload.fieldErrors ?? {}).forEach(([field, messages]) => {
-            const errorNode = form.querySelector<HTMLElement>(`[data-error-for="${field}"]`);
-            const input = form.elements.namedItem(field);
-            if (errorNode) errorNode.textContent = messages?.[0] ?? '';
-            if (input instanceof HTMLElement) input.setAttribute('aria-invalid', 'true');
-          });
-          showStatus(payload.message ?? 'Mesaj gönderilemedi. Lütfen tekrar deneyin.', true);
+        let payload: ContactPayload | null = null;
+        try {
+          payload = (await response.json()) as ContactPayload;
+        } catch {
+          payload = null;
+        }
+
+        if (!response.ok || !payload?.ok) {
+          if (payload?.fieldErrors) {
+            Object.entries(payload.fieldErrors).forEach(([field, messages]) => {
+              const errorNode = form.querySelector<HTMLElement>(`[data-error-for="${field}"]`);
+              const input = form.elements.namedItem(field);
+              if (errorNode) errorNode.textContent = messages?.[0] ?? '';
+              if (input instanceof HTMLElement) input.setAttribute('aria-invalid', 'true');
+            });
+          }
+          showStatus(payload?.message ?? 'İletişim servisi yapılandırılıyor. Lütfen tekrar deneyin.', true);
           return;
         }
 
