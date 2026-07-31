@@ -1,4 +1,5 @@
 export const site = {
+  url: 'https://panther01agency.com',
   brand: 'Panther01Agency',
   meta: {
     title: 'Panther01Agency — AI Otomasyon Ajansı',

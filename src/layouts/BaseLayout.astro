@@ -21,6 +21,19 @@ const { title = site.meta.title, description = site.meta.description } = Astro.p
     <meta name="theme-color" content="#070707" />
     <meta name="color-scheme" content="dark" />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/brand/logo_brand-refresh_mark_20260730_full-color.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site.url} />
+    <meta property="og:image" content={`${site.url}/brand/logo_brand-refresh_primary_20260730_full-color.png`} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Panther01Agency",
+      "url": site.url,
+      "logo": `${site.url}/brand/logo_brand-refresh_primary_20260730_full-color.png`
+    })} />
     <title>{title}</title>
   </head>
   <body>
