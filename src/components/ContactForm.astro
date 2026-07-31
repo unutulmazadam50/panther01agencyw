@@ -118,10 +118,17 @@ import Icon from './Icon.astro';
       setPending(true);
 
       try {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
         const response = await fetch(form.action, {
           method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
         });
 
         let payload: ContactPayload | null = null;

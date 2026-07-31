@@ -27,7 +27,7 @@ const { title = site.meta.title, description = site.meta.description } = Astro.p
     <meta property="og:description" content={description} />
     <meta property="og:url" content={site.url} />
     <meta property="og:image" content={`${site.url}/brand/logo_brand-refresh_primary_20260730_full-color.png`} />
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Panther01Agency",

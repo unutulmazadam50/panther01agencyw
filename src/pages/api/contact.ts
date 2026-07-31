@@ -147,57 +147,54 @@ function checkRateLimit(clientKey: string, now = Date.now()) {
 }
 
 async function readRequestData(request: Request) {
-  const contentLength = Number(request.headers.get('content-length') ?? 0);
-  if (Number.isFinite(contentLength) && contentLength > CONTACT_BODY_LIMIT) {
-    return { error: 'too-large' as const };
-  }
-
-  const bytes = new Uint8Array(await request.arrayBuffer());
-  if (bytes.byteLength > CONTACT_BODY_LIMIT) {
-    return { error: 'too-large' as const };
-  }
-
   const contentType = request.headers.get('content-type')?.toLowerCase() ?? '';
 
   if (contentType.includes('application/json')) {
     try {
-      const value = JSON.parse(new TextDecoder().decode(bytes));
-      if (!value || typeof value !== 'object' || Array.isArray(value)) {
-        return { error: 'invalid' as const };
+      const data = await request.clone().json();
+      if (data && typeof data === 'object' && !Array.isArray(data)) {
+        return { data: data as Record<string, unknown> };
       }
-      return { data: value as Record<string, unknown> };
     } catch {
-      return { error: 'invalid' as const };
+      // fallback
     }
   }
 
-  if (
-    contentType.includes('application/x-www-form-urlencoded') ||
-    contentType.includes('multipart/form-data')
-  ) {
-    try {
-      const parsedRequest = new Request(request.url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': request.headers.get('content-type') ?? '',
-        },
-        body: bytes,
-      });
-      const formData = await parsedRequest.formData();
-      const data: Record<string, unknown> = {};
-
-      for (const [key, value] of formData.entries()) {
-        if (typeof value !== 'string') return { error: 'invalid' as const };
+  try {
+    const formData = await request.clone().formData();
+    const data: Record<string, unknown> = {};
+    for (const [key, value] of formData.entries()) {
+      if (typeof value === 'string') {
         data[key] = value;
       }
-
-      return { data };
-    } catch {
-      return { error: 'invalid' as const };
     }
+    if (Object.keys(data).length > 0) {
+      return { data };
+    }
+  } catch {
+    // fallback
   }
 
-  return { error: 'unsupported' as const };
+  try {
+    const rawText = await request.clone().text();
+    if (rawText) {
+      try {
+        const json = JSON.parse(rawText);
+        if (json && typeof json === 'object') return { data: json };
+      } catch {
+        const params = new URLSearchParams(rawText);
+        const data: Record<string, unknown> = {};
+        for (const [key, value] of params.entries()) {
+          data[key] = value;
+        }
+        if (Object.keys(data).length > 0) return { data };
+      }
+    }
+  } catch {
+    // fallback
+  }
+
+  return { error: 'invalid' as const };
 }
 
 function createEmailContent(submission: ContactSubmission) {
@@ -237,11 +234,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   const parsedBody = await readRequestData(request);
   if ('error' in parsedBody) {
-    const status = parsedBody.error === 'too-large' ? 413 : parsedBody.error === 'unsupported' ? 415 : 400;
     return respond(
       request,
       { ok: false, message: 'Form verisi okunamadı. Alanları kontrol edip tekrar deneyin.' },
-      status,
+      400,
       '/?contact=invalid#iletisim',
     );
   }
